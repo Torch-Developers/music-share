@@ -1,0 +1,26 @@
+{
+  "name": "music-share",
+  "version": "1.0.0",
+  "main": "server/server.js",
+  "scripts": {
+    "install": "yarn run install:client && yarn run install:server",
+    "install:client": "cd client && yarn",
+    "install:server": "cd server && yarn",
+    "build": "cd client && yarn build",
+    "start": "node server/server.js",
+    "start:dev": "concurrently -n client,server \"yarn run client:dev\" \"yarn run server:dev\"",
+    "client:dev": "cd client && yarn start",
+    "server:dev": "cd server && yarn start:dev",
+    "seeders": "cd server && npx sequelize-cli db:seed:all",
+    "migrate": "cd server && npx sequelize-cli db:migrate",
+    "heroku-postbuild": "yarn build"
+  },
+  "repository": "git@github.com:collinlanie12/music-share.git",
+  "author": "Collin Lanier <collinlanier12@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "concurrently": "^6.0.0",
+    "config": "^3.3.6",
+    "nodemon": "^2.0.7"
+  }
+}
