@@ -6,9 +6,7 @@ yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 .DS_Store
-.idea/
-server/config/default.json
-
+default.json
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
