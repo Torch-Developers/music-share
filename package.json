@@ -30,25 +30,20 @@
   },
   "lint-staged": {
     "package.json": [
-      "prettier-package-json --write",
-      "git add"
+      "prettier-package-json --write"
     ],
     "*.json": [
-      "prettier --write",
-      "git add"
+      "prettier --write"
       ],
     "*.{js,js,jsx}": [
       "prettier --write",
-      "yarn lint",
-      "git add"
+      "yarn lint"
       ],
     "*.{scss,css}": [
-      "prettier --write",
-      "git add"
+      "prettier --write"
       ],
     "*.md": [
-      "prettier --write",
-      "git add"
+      "prettier --write"
       ]
   },
   "dependencies": {
