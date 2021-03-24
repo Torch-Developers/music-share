@@ -25,7 +25,7 @@
   },
   "husky": {
     "hooks": {
-      "precommit": "lint-staged"
+      "pre-commit": "lint-staged"
     }
   },
   "lint-staged": {
@@ -33,25 +33,23 @@
       "prettier-package-json --write",
       "git add"
     ],
-  "*.json": [
-    "prettier --write",
-    "git add"
-    ],
-  "*.{js,js,jsx}": [
-    "prettier --write",
-    "yarn lint",
-    "git add"
-    ],
-  "*.{scss,css}": [
-    "prettier --write",
-    "git add"
-    ],
-  "*.md": [
-    "prettier --write",
-    "git add"
-    ]
-    
-   
+    "*.json": [
+      "prettier --write",
+      "git add"
+      ],
+    "*.{js,js,jsx}": [
+      "prettier --write",
+      "yarn lint",
+      "git add"
+      ],
+    "*.{scss,css}": [
+      "prettier --write",
+      "git add"
+      ],
+    "*.md": [
+      "prettier --write",
+      "git add"
+      ]
   },
   "dependencies": {
     "concurrently": "^6.0.0",
