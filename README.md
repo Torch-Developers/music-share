@@ -19,3 +19,13 @@ A Web Application that allows users to share songs and different artists
     "source.fixAll.eslint": true
   },
   ```
+
+## Current Technologies / Integrations
+
+- Github
+- Jira
+- Travis CI
+- Mongodb (Atlas)
+- Express
+- React
+- Node
