@@ -1,26 +1,73 @@
 {
   "name": "music-share",
+  "license": "MIT",
+  "author": "Collin Lanier <collinlanier12@gmail.com>",
+  "repository": "git@github.com:collinlanie12/music-share.git",
   "version": "1.0.0",
   "main": "server/server.js",
   "scripts": {
+    "pre-check": "yarn run format && yarn run lint && yarn run lint:fix",
+    "pre-commit": "lint-staged",
+    "build": "cd client && yarn build",
+    "client:dev": "cd client && yarn start",
+    "format": "prettier --write \"**/*.{js,js,jsx,json,scss,css,md}\"",
+    "heroku-postbuild": "yarn build",
     "install": "yarn run install:client && yarn run install:server",
     "install:client": "cd client && yarn",
     "install:server": "cd server && yarn",
-    "build": "cd client && yarn build",
+    "lint": "eslint ./ --ignore-path .gitignore",
+    "lint:fix": "npm run lint -- --fix",
+    "migrate": "cd server && npx sequelize-cli db:migrate",
+    "seeders": "cd server && npx sequelize-cli db:seed:all",
+    "server:dev": "cd server && yarn start:dev",
     "start": "node server/server.js",
     "start:dev": "concurrently -n client,server \"yarn run client:dev\" \"yarn run server:dev\"",
-    "client:dev": "cd client && yarn start",
-    "server:dev": "cd server && yarn start:dev",
-    "seeders": "cd server && npx sequelize-cli db:seed:all",
-    "migrate": "cd server && npx sequelize-cli db:migrate",
-    "heroku-postbuild": "yarn build"
+    "test": "cd client && yarn test"
   },
-  "repository": "git@github.com:collinlanie12/music-share.git",
-  "author": "Collin Lanier <collinlanier12@gmail.com>",
-  "license": "MIT",
   "dependencies": {
     "concurrently": "^6.0.0",
     "config": "^3.3.6",
-    "nodemon": "^2.0.7"
+    "eslint": "^7.22.0",
+    "eslint-plugin-react": "^7.19.0",
+    "husky": "^5.2.0",
+    "lint-staged": "^10.5.4",
+    "nodemon": "^2.0.7",
+    "prettier": "^2.2.1",
+    "prettier-package-json": "^2.1.3"
+  },
+  "devDependencies": {
+    "@imaginary-cloud/eslint-config-react": "1.0.1",
+    "eslint-config-airbnb": "^18.1.0",
+    "eslint-config-prettier": "^6.10.1",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.3",
+    "eslint-plugin-react-hooks": "^2.5.1"
+  },
+  "eslintConfig": {
+    "extends": "@imaginary-cloud/react"
+  },
+  "lint-staged": {
+    "package.json": [
+      "prettier-package-json --write"
+    ],
+    "*.json": [
+      "prettier --write"
+    ],
+    "*.{js,js,jsx}": [
+      "prettier --write",
+      "yarn lint"
+    ],
+    "*.{scss,css}": [
+      "prettier --write"
+    ],
+    "*.md": [
+      "prettier --write"
+    ],
+    "*.js": "eslint --cache --fix"
+  },
+  "prettier": "@imaginary-cloud/prettier-config",
+  "simple-git-hooks": {
+    "pre-commit": "npx lint-staged"
   }
 }

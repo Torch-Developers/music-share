@@ -1,7 +1,6 @@
 // db.js
 
 const mongoose = require('mongoose')
-// eslint-disable-next-line import/no-extraneous-dependencies
 const config = require('config')
 const db = config.get('mongoURI')
 
